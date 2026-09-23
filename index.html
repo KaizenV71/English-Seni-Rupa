@@ -15,11 +15,10 @@
       --text: #f8fafc;
       --muted: #94a3b8;
       --primary: #3b82f6;
-      --primary-hover: #2563eb;
-      --success: #10b981;
-      --success-bg: rgba(16, 185, 129, 0.15);
-      --danger: #ef4444;
-      --danger-bg: rgba(239, 68, 68, 0.15);
+      --success-bg: rgba(16, 185, 129, 0.2);
+      --success-border: #10b981;
+      --danger-bg: rgba(239, 68, 68, 0.2);
+      --danger-border: #ef4444;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,15 +34,11 @@
       line-height: 1.5;
     }
 
-    .container {
-      width: 100%;
-      max-width: 760px;
-    }
-
+    .container { width: 100%; max-width: 720px; }
     .card {
       background-color: var(--card);
       border: 1px solid var(--border);
-      border-radius: 20px;
+      border-radius: 16px;
       padding: 24px;
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
     }
@@ -51,63 +46,38 @@
     .hidden { display: none !important; }
 
     /* HOME SCREEN */
-    .app-header {
-      margin-bottom: 24px;
-      text-align: center;
-    }
-    .app-header h1 {
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 8px;
-    }
-    .app-header p {
-      color: var(--muted);
-      font-size: 14px;
-    }
+    .app-header { text-align: center; margin-bottom: 24px; }
+    .app-header h1 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+    .app-header p { color: var(--muted); font-size: 14px; }
 
     .subject-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 16px;
-      margin-top: 20px;
     }
-    @media(min-width: 600px) {
+    @media(min-width: 500px) {
       .subject-grid { grid-template-columns: 1fr 1fr; }
     }
 
     .btn-subject {
       background: #273549;
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 12px;
       padding: 20px;
       text-align: left;
       color: var(--text);
       cursor: pointer;
-      transition: all 0.2s ease;
     }
-    .btn-subject:hover {
-      border-color: var(--primary);
-      transform: translateY(-2px);
-      background: #2d3d54;
-    }
-    .btn-subject h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .btn-subject span {
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 500;
-    }
+    .btn-subject:hover { border-color: var(--primary); background: #2d3d54; }
+    .btn-subject h3 { font-size: 18px; margin-bottom: 4px; }
+    .btn-subject span { font-size: 13px; color: var(--muted); }
 
     /* QUIZ SCREEN */
     .quiz-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
     .badge {
       background: rgba(59, 130, 246, 0.2);
@@ -116,13 +86,8 @@
       font-weight: 700;
       padding: 4px 10px;
       border-radius: 20px;
-      text-transform: uppercase;
     }
-    .meta-text {
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 600;
-    }
+    .meta-text { font-size: 13px; color: var(--muted); font-weight: 600; }
 
     .progress-track {
       width: 100%;
@@ -130,109 +95,59 @@
       background: var(--border);
       border-radius: 10px;
       overflow: hidden;
-      margin-bottom: 24px;
-    }
-    .progress-fill {
-      height: 100%;
-      background: var(--primary);
-      width: 0%;
-      transition: width 0.3s ease;
-    }
-
-    .question-text {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 20px;
-      white-space: pre-line;
-    }
-
-    .options-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
       margin-bottom: 20px;
     }
+    .progress-fill { height: 100%; background: var(--primary); width: 0%; transition: width 0.2s; }
+
+    .question-text { font-size: 16px; font-weight: 600; margin-bottom: 20px; white-space: pre-line; }
+
+    .options-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
     .btn-option {
       background: #243144;
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px 16px;
+      border-radius: 10px;
+      padding: 12px 16px;
       text-align: left;
       color: var(--text);
       font-size: 14px;
-      font-weight: 500;
       cursor: pointer;
       display: flex;
-      align-items: flex-start;
       gap: 10px;
-      transition: all 0.15s ease;
     }
-    .btn-option:hover:not(:disabled) {
-      border-color: var(--primary);
-      background: #2a3a52;
-    }
-    .btn-option:disabled { cursor: default; }
+    .btn-option:hover:not(:disabled) { border-color: var(--primary); background: #2a3a52; }
 
-    .btn-option.opt-correct {
-      background: var(--success-bg) !important;
-      border-color: var(--success) !important;
-      color: #6ee7b7;
-    }
-    .btn-option.opt-wrong {
-      background: var(--danger-bg) !important;
-      border-color: var(--danger) !important;
-      color: #fca5a5;
-    }
+    .btn-option.opt-correct { background: var(--success-bg) !important; border-color: var(--success-border) !important; color: #6ee7b7; }
+    .btn-option.opt-wrong { background: var(--danger-bg) !important; border-color: var(--danger-border) !important; color: #fca5a5; }
 
     .feedback-box {
-      border-radius: 12px;
-      padding: 14px 16px;
+      border-radius: 10px;
+      padding: 12px 16px;
       margin-bottom: 20px;
       font-size: 13px;
-      line-height: 1.6;
     }
-    .feedback-box.correct {
-      background: var(--success-bg);
-      border: 1px solid var(--success);
-      color: #a7f3d0;
-    }
-    .feedback-box.wrong {
-      background: var(--danger-bg);
-      border: 1px solid var(--danger);
-      color: #fecaca;
-    }
+    .feedback-box.correct { background: var(--success-bg); border: 1px solid var(--success-border); color: #a7f3d0; }
+    .feedback-box.wrong { background: var(--danger-bg); border: 1px solid var(--danger-border); color: #fecaca; }
 
-    .nav-actions {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-    }
+    .nav-actions { display: flex; justify-content: space-between; gap: 12px; }
     .btn {
-      padding: 12px 20px;
-      border-radius: 12px;
+      padding: 10px 18px;
+      border-radius: 10px;
       font-size: 14px;
       font-weight: 700;
       cursor: pointer;
       border: none;
-      transition: opacity 0.2s;
     }
-    .btn:hover { opacity: 0.9; }
     .btn-secondary { background: var(--border); color: var(--text); }
     .btn-primary { background: var(--primary); color: #fff; }
     .btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
     /* RESULT SCREEN */
     .result-box { text-align: center; padding: 20px 0; }
-    .score-big {
-      font-size: 48px;
-      font-weight: 800;
-      color: var(--primary);
-      margin: 10px 0;
-    }
+    .score-big { font-size: 48px; font-weight: 800; color: var(--primary); margin: 10px 0; }
     .advice-card {
       background: #243144;
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 10px;
       padding: 16px;
       font-size: 14px;
       margin: 20px 0;
@@ -241,22 +156,23 @@
   </style>
 </head>
 <body>
+
   <div class="container">
     
     <!-- HOME SCREEN -->
     <div id="screen-home" class="card">
       <div class="app-header">
         <h1>Simulasi PSTS/ASTS KLS 8</h1>
-        <p>Latihan mandiri persiapannya ujian. Pilih mata pelajaran di bawah untuk mulai:</p>
+        <p>Pilih mata pelajaran untuk mulai latihan soal:</p>
       </div>
       <div class="subject-grid">
-        <button class="btn-subject" onclick="initQuiz('inggris')">
+        <button class="btn-subject" id="btn-start-inggris">
           <h3>🇬🇧 Bahasa Inggris</h3>
-          <span>50 Soal • 10 Materi Utama</span>
+          <span>50 Soal • Pilihan Ganda</span>
         </button>
-        <button class="btn-subject" onclick="initQuiz('seni')">
+        <button class="btn-subject" id="btn-start-seni">
           <h3>🎨 Seni Rupa</h3>
-          <span>50 Soal • Sesuai Kisi-kisi PSTS</span>
+          <span>50 Soal • Pilihan Ganda</span>
         </button>
       </div>
     </div>
@@ -277,8 +193,8 @@
       <div id="feedback-box" class="feedback-box hidden"></div>
 
       <div class="nav-actions">
-        <button class="btn btn-secondary" onclick="exitToHome()">🏠 Keluar</button>
-        <button id="btn-next" class="btn btn-primary" onclick="nextQuestion()" disabled>Soal Berikutnya ➜</button>
+        <button class="btn btn-secondary" id="btn-exit">🏠 Keluar</button>
+        <button id="btn-next" class="btn btn-primary" disabled>Soal Berikutnya ➜</button>
       </div>
     </div>
 
@@ -286,294 +202,274 @@
     <div id="screen-result" class="card hidden">
       <div class="result-box">
         <h2>Ujian Selesai!</h2>
-        <p class="meta-text">Hasil perolehan nilai latihan kamu:</p>
+        <p class="meta-text">Hasil perolehan nilai kamu:</p>
         <div id="score-display" class="score-big">0/50</div>
         <p id="score-percent" class="meta-text" style="font-size: 16px; font-weight:700;"></p>
-        
         <div id="advice-text" class="advice-card"></div>
-
-        <button class="btn btn-primary" onclick="exitToHome()">🔄 Kembali ke Menu Utama</button>
+        <button class="btn btn-primary" id="btn-restart">🔄 Kembali ke Menu Utama</button>
       </div>
     </div>
 
   </div>
 
 <script>
-// DATA SOAL BAHASA INGGRIS (50 SOAL)
-const rawEnglish = [
-  // 1. Classroom Language
-  ["Teacher: \"_____, open your book on page 12.\" What is the suitable expression?", ["Attention, please", "I agree with you", "Happy birthday", "Good night"], 0, "Jawaban: 'Attention, please'. Kalimat meminta perhatian saat di kelas."],
-  ["Student: \"_____ I wash my hands, Sir?\"\nTeacher: \"Yes, sure.\"", ["May", "Must", "Will", "Should"], 0, "Jawaban: 'May'. Digunakan untuk meminta izin secara sopan."],
-  ["Teacher: \"Keep quiet, please! The test is starting.\"\nWhat does the teacher mean?", ["Asking students to be quiet", "Asking students to speak louder", "Asking students to read", "Asking students to leave"], 0, "Jawaban: meminta siswa untuk tenang/diam."],
-  ["Student: \"Sorry for being late, Ma'am.\"\nTeacher: \"_____. Sit down, please.\"", ["That's alright", "You are welcome", "I don't care", "Goodbye"], 0, "Jawaban: 'That's alright' merespons permohonan maaf."],
-  ["Teacher: \"_____ the whiteboard, please!\"\nStudent: \"Yes, Sir.\"", ["Clean", "Eat", "Sleep", "Listen"], 0, "Jawaban: 'Clean' (bersihkan papan tulis)."],
-
-  // 2. Compliment
-  ["Rani: \"I made this cupcake for you.\"\nSiti: \"Wow, _____! It tastes amazing!\"", ["What a delicious cupcake", "How terrible it is", "I hate it", "It is so bad"], 0, "Jawaban: 'What a delicious cupcake' (pujian atas makanan enak)."],
-  ["Deni: \"Look at my new drawing.\"\nBudi: \"_____. You are so talented!\"", ["That's fantastic", "It looks messy", "I don't like it", "You should stop"], 0, "Jawaban: 'That's fantastic' merupakan ungkapan pujian."],
-  ["Which statement is an expression of compliment?", ["You look great today!", "Where are you going?", "I don't feel good.", "Please open the door."], 0, "Jawaban: 'You look great today!' (memberi pujian pada penampilan)."],
-  ["Sinta: \"What a beautiful dress!\"\nLestari: \"_____.\"", ["Thank you very much", "No problem", "I am sorry", "You're welcome"], 0, "Jawaban: merespons pujian dengan ucapan terima kasih."],
-  ["John: \"You played the guitar so well!\"\nAlex: \"_____.\"", ["I'm glad you liked it", "I am not fine", "It is terrible", "Don't look at me"], 0, "Jawaban: 'I'm glad you liked it' adalah respons atas pujian."],
-
-  // 3. Certainty
-  ["Riko: \"Are you sure we have homework today?\"\nDino: \"_____. The teacher told us this morning.\"", ["Yes, I am certain", "I am not sure", "I doubt it", "I don't know"], 0, "Jawaban: 'Yes, I am certain' menyatakan keyakinan."],
-  ["Siti: \"Is the library open on Sunday?\"\nLia: \"I'm 100% sure it is closed.\" Lia expresses _____.", ["certainty", "uncertainty", "dislike", "congratulation"], 0, "Jawaban: certainty (kepastian)."],
-  ["Which expression shows certainty?", ["I am absolutely sure about it.", "Maybe it will rain.", "I have no idea.", "I am not really sure."], 0, "Jawaban: 'I am absolutely sure about it.'"],
-  ["Andi: \"Will our team win the match?\"\nBagas: \"_____. They have trained hard for weeks.\"", ["I'm positive about that", "I am doubtful", "I don't think so", "Maybe not"], 0, "Jawaban: 'I'm positive about that' menunjukkan keyakinan."],
-  ["Teacher: \"Is Paris the capital of France?\"\nStudent: \"Yes, I am _____ sure it is.\"", ["completely", "doubtfully", "hesitantly", "never"], 0, "Jawaban: 'completely' (sangat yakin)."],
-
-  // 4. Uncertainty
-  ["Maya: \"Will Mr. Han come to class today?\"\nEko: \"_____. He said he felt unwell yesterday.\"", ["I'm not really sure", "I am certain", "Without a doubt", "Definitely yes"], 0, "Jawaban: 'I'm not really sure' menunjukkan keraguan/ketidakpastian."],
-  ["Rizal: \"Is the concert starting at 7 PM?\"\nFani: \"_____. We should check the ticket again.\"", ["I doubt it", "I am 100% sure", "It is certain", "Of course"], 0, "Jawaban: 'I doubt it' (saya ragu)."],
-  ["Expressing uncertainty means you are _____ about something.", ["not sure", "very confident", "happy", "angry"], 0, "Jawaban: 'not sure'."],
-  ["Dina: \"Do you think it will rain this afternoon?\"\nToni: \"_____ because the sky is cloudy, but who knows?\"", ["I'm not certain", "I am sure", "I am positive", "Definitely"], 0, "Jawaban: 'I'm not certain'."],
-  ["Which phrase shows uncertainty?", ["I have doubts about that.", "I am totally sure.", "I know for certain.", "It is clear."], 0, "Jawaban: 'I have doubts about that.'"],
-
-  // 5. Like & Dislike
-  ["I _____ playing football in the afternoon. It is my favorite hobby.", ["enjoy", "hate", "dislike", "cannot stand"], 0, "Jawaban: 'enjoy' karena merupakan hobi."],
-  ["Siska: \"Do you like spicy food?\"\nDoni: \"No, I _____. It hurts my stomach.\"", ["dislike it", "love it", "am fond of it", "really enjoy it"], 0, "Jawaban: 'dislike it' karena perutnya sakit."],
-  ["Maya: \"What do you think of horror movies?\"\nLia: \"I _____ them. They give me nightmares!\"", ["hate", "love", "like", "enjoy"], 0, "Jawaban: 'hate' (benci)."],
-  ["Which sentence expresses a preference/like?", ["I am crazy about pop music.", "I can't stand loud noises.", "I detest waiting in line.", "I don't like coffee."], 0, "Jawaban: 'I am crazy about pop music.'"],
-  ["Budi: \"I really like swimming.\"\nWhich word has the same meaning as 'like'?", ["Enjoy", "Dislike", "Avoid", "Hate"], 0, "Jawaban: 'Enjoy' memiliki arti serupa."],
-
-  // 6. Recount Text
-  ["What is the main purpose of a recount text?", ["To retell past events or experiences", "To describe a person in detail", "To persuade readers to buy something", "To explain how to make something"], 0, "Jawaban: menceritakan pengalaman masa lalu."],
-  ["The generic structure of a Recount Text is _____.", ["Orientation - Events - Reorientation", "Identification - Description", "Goal - Materials - Steps", "Thesis - Arguments - Conclusion"], 0, "Jawaban: Orientation - Events - Reorientation."],
-  ["In a recount text, 'Orientation' provides information about _____.", ["Who, where, and when the story happened", "The final resolution of the problem", "Steps to solve a issue", "A list of tools needed"], 0, "Jawaban: berisi latar belakang tokoh, tempat, dan waktu."],
-  ["Recount text mostly uses which tense?", ["Simple Past Tense", "Simple Present Tense", "Future Tense", "Present Continuous Tense"], 0, "Jawaban: Simple Past Tense."],
-  ["\"Last week, my family and I went to Kuta Beach.\" This sentence belongs to the _____ section.", ["Orientation", "Events", "Reorientation", "Resolution"], 0, "Jawaban: Orientation (pembuka cerita)."],
-
-  // 7. Simple Past Tense
-  ["They _____ to Bali for holiday last month.", ["went", "go", "goes", "going"], 0, "Jawaban: 'went' adalah V2 dari 'go'."],
-  ["She _____ a delicious dinner for us yesterday.", ["cooked", "cooks", "cooking", "is cooking"], 0, "Jawaban: 'cooked' (Simple Past)."],
-  ["Negative form of 'He bought a new bicycle yesterday' is _____.", ["He did not buy a new bicycle yesterday", "He does not buy a new bicycle yesterday", "He did not bought a new bicycle yesterday", "He was not buy a new bicycle yesterday"], 0, "Jawaban: 'He did not buy...' (did + V1)."],
-  ["_____ you watch the football match on TV last night?", ["Did", "Do", "Does", "Were"], 0, "Jawaban: 'Did' untuk kata kerja lampau."],
-  ["I _____ very tired after running yesterday afternoon.", ["was", "were", "am", "is"], 0, "Jawaban: 'was' (to be lampau untuk subjek 'I')."],
-
-  // 8. Time Connective
-  ["First, wash the apples. _____, cut them into small pieces.", ["Then", "Last year", "Yesterday", "Ago"], 0, "Jawaban: 'Then' (kemudian) adalah kata hubung urutan waktu."],
-  ["Which word is NOT a time connective?", ["Beautiful", "After that", "Finally", "Next"], 0, "Jawaban: 'Beautiful' adalah kata sifat."],
-  ["We visited the museum. _____, we had lunch at a nearby restaurant.", ["Afterward", "Because", "Although", "In order to"], 0, "Jawaban: 'Afterward' (setelah itu)."],
-  ["_____ we finished our test, we collected the answer sheets.", ["After", "Beforehand", "Next week", "In the future"], 0, "Jawaban: 'After' (setelah)."],
-  ["\"_____ , we arrived safely at home around 9 PM.\"", ["Finally", "First", "Initially", "To begin with"], 0, "Jawaban: 'Finally' (akhirnya) untuk penutup urutan cerita."],
-
-  // 9. Personality Traits
-  ["Someone who likes to share things with others is _____.", ["generous", "stingy", "arrogant", "lazy"], 0, "Jawaban: 'generous' (dermawan/suka berbagi)."],
-  ["Doni always says 'please' and 'thank you'. He is a very _____ boy.", ["polite", "rude", "dishonest", "greedy"], 0, "Jawaban: 'polite' (sopan)."],
-  ["Sarah never tells lies. Everyone trusts her because she is _____.", ["honest", "cruel", "careless", "selfish"], 0, "Jawaban: 'honest' (jujur)."],
-  ["A person who doesn't like working or doing any effort is called _____.", ["lazy", "hardworking", "diligent", "active"], 0, "Jawaban: 'lazy' (pemalas)."],
-  ["Rian is very _____. He always helps his mother clean the house without being asked.", ["helpful", "stubborn", "shy", "impatient"], 0, "Jawaban: 'helpful' (suka membantu)."],
-
-  // 10. Congratulation
-  ["Siti won the first prize in the national storytelling competition.\nWhat should you say to her?", ["Congratulations on your victory!", "I am sorry to hear that.", "Get well soon!", "Happy New Year!"], 0, "Jawaban: 'Congratulations on your victory!'."],
-  ["Rifky: \"I just passed the final exam!\"\nBobi: \"_____! I'm so proud of you!\"", ["Congratulations", "Good luck next time", "I hope you fail", "Pardon me"], 0, "Jawaban: 'Congratulations!'."],
-  ["Which situation requires you to say 'Congratulations'?", ["Your friend graduates from university", "Your friend gets sick", "Your friend loses their wallet", "Your friend is crying"], 0, "Jawaban: saat teman lulus kuliah."],
-  ["Dita: \"Congratulations on winning the match!\"\nEdo: \"_____.\"", ["Thank you so much", "Don't mention it", "I am bad", "Never mind"], 0, "Jawaban: 'Thank you so much' merespons ucapan selamat."],
-  ["\"Wishing you all the best on your success!\" Expresses _____.", ["congratulation", "apology", "sympathy", "disagreement"], 0, "Jawaban: ungkapan selamat (congratulation)."]
+// BAHASA INGGRIS DATA (50)
+const dataInggris = [
+  { q: "Teacher: \"_____, open your book on page 12.\" What is the suitable expression?", o: ["Attention, please", "I agree with you", "Happy birthday", "Good night"], c: 0, e: "Jawaban: 'Attention, please'. Digunakan untuk meminta perhatian." },
+  { q: "Student: \"_____ I wash my hands, Sir?\"\nTeacher: \"Yes, sure.\"", o: ["May", "Must", "Will", "Should"], c: 0, e: "Jawaban: 'May'. Digunakan untuk meminta izin secara sopan." },
+  { q: "Teacher: \"Keep quiet, please! The test is starting.\"\nWhat does the teacher mean?", o: ["Asking students to be quiet", "Asking students to speak louder", "Asking students to read", "Asking students to leave"], c: 0, e: "Jawaban: Meminta siswa tenang/diam." },
+  { q: "Student: \"Sorry for being late, Ma'am.\"\nTeacher: \"_____. Sit down, please.\"", o: ["That's alright", "You are welcome", "I don't care", "Goodbye"], c: 0, e: "Jawaban: 'That's alright' untuk merespons permohonan maaf." },
+  { q: "Teacher: \"_____ the whiteboard, please!\"\nStudent: \"Yes, Sir.\"", o: ["Clean", "Eat", "Sleep", "Listen"], c: 0, e: "Jawaban: 'Clean' (bersihkan papan tulis)." },
+  { q: "Rani: \"I made this cupcake for you.\"\nSiti: \"Wow, _____! It tastes amazing!\"", o: ["What a delicious cupcake", "How terrible it is", "I hate it", "It is so bad"], c: 0, e: "Jawaban: 'What a delicious cupcake' (pujian makanan enak)." },
+  { q: "Deni: \"Look at my new drawing.\"\nBudi: \"_____. You are so talented!\"", o: ["That's fantastic", "It looks messy", "I don't like it", "You should stop"], c: 0, e: "Jawaban: 'That's fantastic' (ungkapan pujian)." },
+  { q: "Which statement is an expression of compliment?", o: ["You look great today!", "Where are you going?", "I don't feel good.", "Please open the door."], c: 0, e: "Jawaban: 'You look great today!'." },
+  { q: "Sinta: \"What a beautiful dress!\"\nLestari: \"_____.\"", o: ["Thank you very much", "No problem", "I am sorry", "You're welcome"], c: 0, e: "Jawaban: 'Thank you very much'." },
+  { q: "John: \"You played the guitar so well!\"\nAlex: \"_____.\"", o: ["I'm glad you liked it", "I am not fine", "It is terrible", "Don't look at me"], c: 0, e: "Jawaban: 'I'm glad you liked it'." },
+  { q: "Riko: \"Are you sure we have homework today?\"\nDino: \"_____. The teacher told us this morning.\"", o: ["Yes, I am certain", "I am not sure", "I doubt it", "I don't know"], c: 0, e: "Jawaban: 'Yes, I am certain' (yakin)." },
+  { q: "Siti: \"Is the library open on Sunday?\"\nLia: \"I'm 100% sure it is closed.\" Lia expresses _____.", o: ["certainty", "uncertainty", "dislike", "congratulation"], c: 0, e: "Jawaban: certainty (kepastian)." },
+  { q: "Which expression shows certainty?", o: ["I am absolutely sure about it.", "Maybe it will rain.", "I have no idea.", "I am not really sure."], c: 0, e: "Jawaban: 'I am absolutely sure about it.'." },
+  { q: "Andi: \"Will our team win the match?\"\nBagas: \"_____. They have trained hard for weeks.\"", o: ["I'm positive about that", "I am doubtful", "I don't think so", "Maybe not"], c: 0, e: "Jawaban: 'I'm positive about that'." },
+  { q: "Teacher: \"Is Paris the capital of France?\"\nStudent: \"Yes, I am _____ sure it is.\"", o: ["completely", "doubtfully", "hesitantly", "never"], c: 0, e: "Jawaban: 'completely' (sangat yakin)." },
+  { q: "Maya: \"Will Mr. Han come to class today?\"\nEko: \"_____. He said he felt unwell yesterday.\"", o: ["I'm not really sure", "I am certain", "Without a doubt", "Definitely yes"], c: 0, e: "Jawaban: 'I'm not really sure' (tidak yakin)." },
+  { q: "Rizal: \"Is the concert starting at 7 PM?\"\nFani: \"_____. We should check the ticket again.\"", o: ["I doubt it", "I am 100% sure", "It is certain", "Of course"], c: 0, e: "Jawaban: 'I doubt it' (ragu)." },
+  { q: "Expressing uncertainty means you are _____ about something.", o: ["not sure", "very confident", "happy", "angry"], c: 0, e: "Jawaban: 'not sure'." },
+  { q: "Dina: \"Do you think it will rain this afternoon?\"\nToni: \"_____ because the sky is cloudy, but who knows?\"", o: ["I'm not certain", "I am sure", "I am positive", "Definitely"], c: 0, e: "Jawaban: 'I'm not certain'." },
+  { q: "Which phrase shows uncertainty?", o: ["I have doubts about that.", "I am totally sure.", "I know for certain.", "It is clear."], c: 0, e: "Jawaban: 'I have doubts about that.'." },
+  { q: "I _____ playing football in the afternoon. It is my favorite hobby.", o: ["enjoy", "hate", "dislike", "cannot stand"], c: 0, e: "Jawaban: 'enjoy'." },
+  { q: "Siska: \"Do you like spicy food?\"\nDoni: \"No, I _____. It hurts my stomach.\"", o: ["dislike it", "love it", "am fond of it", "really enjoy it"], c: 0, e: "Jawaban: 'dislike it'." },
+  { q: "Maya: \"What do you think of horror movies?\"\nLia: \"I _____ them. They give me nightmares!\"", o: ["hate", "love", "like", "enjoy"], c: 0, e: "Jawaban: 'hate' (benci)." },
+  { q: "Which sentence expresses a preference/like?", o: ["I am crazy about pop music.", "I can't stand loud noises.", "I detest waiting in line.", "I don't like coffee."], c: 0, e: "Jawaban: 'I am crazy about pop music.'." },
+  { q: "Budi: \"I really like swimming.\"\nWhich word has the same meaning as 'like'?", o: ["Enjoy", "Dislike", "Avoid", "Hate"], c: 0, e: "Jawaban: 'Enjoy'." },
+  { q: "What is the main purpose of a recount text?", o: ["To retell past events or experiences", "To describe a person in detail", "To persuade readers to buy something", "To explain how to make something"], c: 0, e: "Jawaban: Menceritakan pengalaman masa lalu." },
+  { q: "The generic structure of a Recount Text is _____.", o: ["Orientation - Events - Reorientation", "Identification - Description", "Goal - Materials - Steps", "Thesis - Arguments - Conclusion"], c: 0, e: "Jawaban: Orientation - Events - Reorientation." },
+  { q: "In a recount text, 'Orientation' provides information about _____.", o: ["Who, where, and when the story happened", "The final resolution of the problem", "Steps to solve a issue", "A list of tools needed"], c: 0, e: "Jawaban: Tokoh, tempat, dan waktu kejadian." },
+  { q: "Recount text mostly uses which tense?", o: ["Simple Past Tense", "Simple Present Tense", "Future Tense", "Present Continuous Tense"], c: 0, e: "Jawaban: Simple Past Tense." },
+  { q: " \"Last week, my family and I went to Kuta Beach.\" This sentence belongs to _____.", o: ["Orientation", "Events", "Reorientation", "Resolution"], c: 0, e: "Jawaban: Orientation." },
+  { q: "They _____ to Bali for holiday last month.", o: ["went", "go", "goes", "going"], c: 0, e: "Jawaban: 'went' (V2 dari go)." },
+  { q: "She _____ a delicious dinner for us yesterday.", o: ["cooked", "cooks", "cooking", "is cooking"], c: 0, e: "Jawaban: 'cooked'." },
+  { q: "Negative form of 'He bought a new bicycle yesterday' is _____.", o: ["He did not buy a new bicycle yesterday", "He does not buy a new bicycle yesterday", "He did not bought a new bicycle yesterday", "He was not buy a new bicycle yesterday"], c: 0, e: "Jawaban: 'He did not buy...'." },
+  { q: "_____ you watch the football match on TV last night?", o: ["Did", "Do", "Does", "Were"], c: 0, e: "Jawaban: 'Did'." },
+  { q: "I _____ very tired after running yesterday afternoon.", o: ["was", "were", "am", "is"], c: 0, e: "Jawaban: 'was'." },
+  { q: "First, wash the apples. _____, cut them into small pieces.", o: ["Then", "Last year", "Yesterday", "Ago"], c: 0, e: "Jawaban: 'Then'." },
+  { q: "Which word is NOT a time connective?", o: ["Beautiful", "After that", "Finally", "Next"], c: 0, e: "Jawaban: 'Beautiful'." },
+  { q: "We visited the museum. _____, we had lunch at a nearby restaurant.", o: ["Afterward", "Because", "Although", "In order to"], c: 0, e: "Jawaban: 'Afterward'." },
+  { q: "_____ we finished our test, we collected the answer sheets.", o: ["After", "Beforehand", "Next week", "In the future"], c: 0, e: "Jawaban: 'After'." },
+  { q: "\"_____ , we arrived safely at home around 9 PM.\"", o: ["Finally", "First", "Initially", "To begin with"], c: 0, e: "Jawaban: 'Finally'." },
+  { q: "Someone who likes to share things with others is _____.", o: ["generous", "stingy", "arrogant", "lazy"], c: 0, e: "Jawaban: 'generous' (dermawan)." },
+  { q: "Doni always says 'please' and 'thank you'. He is a very _____ boy.", o: ["polite", "rude", "dishonest", "greedy"], c: 0, e: "Jawaban: 'polite' (sopan)." },
+  { q: "Sarah never tells lies. Everyone trusts her because she is _____.", o: ["honest", "cruel", "careless", "selfish"], c: 0, e: "Jawaban: 'honest' (jujur)." },
+  { q: "A person who doesn't like working or doing any effort is called _____.", o: ["lazy", "hardworking", "diligent", "active"], c: 0, e: "Jawaban: 'lazy'." },
+  { q: "Rian is very _____. He always helps his mother clean the house.", o: ["helpful", "stubborn", "shy", "impatient"], c: 0, e: "Jawaban: 'helpful'." },
+  { q: "Siti won the first prize in storytelling competition. What should you say?", o: ["Congratulations on your victory!", "I am sorry to hear that.", "Get well soon!", "Happy New Year!"], c: 0, e: "Jawaban: 'Congratulations on your victory!'." },
+  { q: "Rifky: \"I just passed the final exam!\"\nBobi: \"_____! I'm so proud of you!\"", o: ["Congratulations", "Good luck next time", "I hope you fail", "Pardon me"], c: 0, e: "Jawaban: 'Congratulations'." },
+  { q: "Which situation requires you to say 'Congratulations'?", o: ["Your friend graduates from university", "Your friend gets sick", "Your friend loses wallet", "Your friend is crying"], c: 0, e: "Jawaban: Lulus kuliah." },
+  { q: "Dita: \"Congratulations on winning the match!\"\nEdo: \"_____.\"", o: ["Thank you so much", "Don't mention it", "I am bad", "Never mind"], c: 0, e: "Jawaban: 'Thank you so much'." },
+  { q: "\"Wishing you all the best on your success!\" Expresses _____.", o: ["congratulation", "apology", "sympathy", "disagreement"], c: 0, e: "Jawaban: Congratulation." }
 ];
 
-// DATA SOAL SENI RUPA (50 SOAL)
-const rawArt = [
-  // Menggambar Perspektif (1-20)
-  ["Kata 'perspektif' berasal dari bahasa Latin, yaitu 'perspicere' yang memiliki arti _____", ["Melihat secara tepat / menembus", "Menggambar indah", "Melukis alam", "Memotong bidang"], 0, "Kata 'perspicere' berarti melihat secara tepat atau melihat menembus."],
-  ["Pengamatan objek menggambar di mana posisi mata pengamat berada jauh di bawah objek dinamakan sudut pandang mata _____", ["Cacing / Burung bawah", "Normal", "Burung / Katak", "Samping"], 0, "Mata cacing (worm's eye view) posisi mata pengamat berada jauh di bawah objek."],
-  ["Ahmad berdiri di atas gedung lantai 15 dan melihat mobil-mobil di jalan raya tampak sangat kecil. Jenis sudut pandang mata ini adalah _____", ["Mata Burung (Bird's eye view)", "Mata Normal", "Mata Cacing", "Mata Samping"], 0, "Pengamatan dari tempat tinggi ke bawah dinamakan mata burung (bird's eye view)."],
-  ["Sudut pandang mata yang posisinya sejajar dengan tinggi mata manusia pada umumnya disebut sudut pandang mata _____", ["Normal", "Cacing", "Burung", "Luar"], 0, "Mata normal berada sejajar dengan tinggi mata manusia pada umumnya."],
-  ["Pernyataan yang tepat mengenai gambar perspektif adalah _____", ["Teknik menggambar objek tiga dimensi pada bidang datar sesuai pandangan mata", "Teknik menggambar menggunakan garis lingkaran saja", "Gambar yang tidak memiliki titik hilang", "Gambar yang mengabaikan proporsi dan jarak"], 0, "Gambar perspektif memindahkan wujud 3D ke bidang 2D sesuai pandangan mata."],
-  ["Ketika kita berada di tengah rel kereta api yang lurus dan rata, rel tersebut tampak menyatu pada satu titik di kejauhan. Ini adalah pengaplikasian perspektif _____", ["1 Titik Hilang", "2 Titik Hilang", "3 Titik Hilang", "Tanpa Titik Hilang"], 0, "Jalan/rel lurus yang menguncup ke satu titik menggunakan perspektif 1 titik hilang."],
-  ["Gambar koridor sekolah yang memanjang lurus ke depan menggunakan prinsip menggambar perspektif _____", ["1 Titik Hilang", "2 Titik Hilang", "3 Titik Hilang", "4 Titik Hilang"], 0, "Koridor lurus diposisikan sejajar mata menggunakan 1 titik hilang."],
-  ["Pengertian dari garis horizon dalam menggambar perspektif adalah _____", ["Garis khayal yang menunjukkan tingginya pandangan mata pengamat", "Garis tebal di bawah kertas", "Garis vertikal pemotong gambar", "Garis melingkar di tengah objek"], 0, "Garis horizon adalah garis khayal pembatas antara langit dan bumi/posisi tinggi mata pengamat."],
-  ["Fungsi utama titik hilang pada gambar perspektif 1 titik hilang adalah _____", ["Sebagai pusat pertemuan garis-garis sejajar yang menjauh dari mata", "Sebagai hiasan gambar", "Untuk mewarnai latar belakang", "Sebagai garis tepi kertas"], 0, "Titik hilang adalah titik pertemuan garis perspektif yang menjauh."],
-  ["Seseorang menggambarkan sudut luar gedung bertingkat di mana kedua sisinya miring ke kanan dan ke kiri. Teknik yang digunakan adalah perspektif _____", ["2 Titik Hilang", "1 Titik Hilang", "Katak", "Mata Normal"], 0, "Melihat sudut luar bangunan/objek biasanya menggunakan perspektif 2 titik hilang."],
-  ["Fungsi titik hilang pada gambar perspektif 2 titik hilang berada pada garis horizon di sebelah _____", ["Kiri dan kanan", "Atas dan bawah", "Tengah saja", "Depan dan belakang"], 0, "Perspektif 2 titik hilang meletakkan 2 titik di ujung kiri dan kanan garis horizon."],
-  ["Kaidah utama dalam perspektif 2 titik hilang adalah _____", ["Garis-garis horizontal objek akan menuju ke dua titik hilang di garis horizon", "Semua garis digambar melengkung", "Objek yang jauh digambar lebih besar", "Tidak menggunakan garis horizon"], 0, "Garis horizontal akan memusat ke titik hilang kiri dan kanan."],
-  ["Menggambar interior ruangan kamar dari posisi sudut ruangan paling cocok menerapkan perspektif _____", ["2 Titik Hilang", "1 Titik Hilang", "3 Titik Hilang", "Tanpa Titik Hilang"], 0, "Sudut dalam ruangan menampilkan dua sisi dinding yang menggunakan 2 titik hilang."],
-  ["Pernyataan yang BENAR mengenai perspektif 2 titik hilang adalah _____", ["Memiliki dua titik fokus pada garis horizon untuk menggambarkan objek dari sudutnya", "Objek tampak rata tanpa kedalaman", "Hanya cocok untuk menggambar lingkaran", "Titik hilangnya terletak di luar garis horizon"], 0, "Menggambarkan objek 3D dari sudut pengamatan."],
-  ["Akibat dari penggunaan lokasi titik hilang yang terlalu dekat satu sama lain pada perspektif 2 titik hilang adalah _____", ["Gambar objek akan tampak distorsi / janggal / tidak alami", "Gambar menjadi sangat realistis", "Warna objek menjadi pudar", "Garis gambar akan hilang otomatis"], 0, "Titik hilang yang terlalu dekat membuat bentuk objek terlihat terdistorsi/tidak proporsional."],
-  ["Hukum perspektif menyatakan bahwa semakin jauh posisi suatu benda dari mata pengamat, maka benda tersebut akan tampak _____", ["Semakin kecil", "Semakin besar", "Semakin tebal", "Tetap sama ukurannya"], 0, "Hukum dasar perspektif: semakin jauh benda, makin kecil ukurannya."],
-  ["Pemandangan jalan raya di daerah perbukitan yang berbelok-belok menggunakan penerapan hukum perspektif di mana _____", ["Warna dan detail benda di kejauhan semakin kabur/pudar", "Semua benda digambar dengan warna sangat tajam", "Ukuran pohon tidak berubah dari depan ke belakang", "Objek terdekat terlihat sangat kecil"], 0, "Detail dan warna benda makin jauh makin pudar (perspektif udara/warna)."],
-  ["Contoh benda yang paling tepat digambar dengan teknik perspektif 2 titik hilang adalah _____", ["Kotak kemasan / lemari yang dilihat dari posisi sudutnya", "Bola basket bulat", "Cermin datar dari depan", "Papan tulis datar"], 0, "Sudut lemari/kotak adalah contoh ideal 2 titik hilang."],
-  ["Seorang arsitek menggambar rancangan rumah tampak sudut depan. Arsitek tersebut menggunakan teknik perspektif _____", ["2 Titik Hilang", "1 Titik Hilang", "3 Titik Hilang", "Mata Cacing"], 0, "Tampak sudut (corner view) menggunakan 2 titik hilang."],
-  ["Pada menggambar perspektif, objek yang posisinya paling dekat dengan pengamat digambar dengan _____", ["Ukuran lebih besar dan detail yang lebih jelas", "Ukuran lebih kecil", "Garis samar-samar", "Tanpa warna"], 0, "Benda terdekat terlihat paling besar dan jelas."],
-
-  // Menggambar dengan Bantuan Skala Grid (21-35)
-  ["Dini ingin memperbesar gambar berukuran 5 cm x 5 cm menjadi 2 kali lipat dengan metode grid. Ukuran gambar baru Dini adalah _____", ["10 cm x 10 cm", "7 cm x 7 cm", "15 cm x 15 cm", "20 cm x 20 cm"], 0, "Ukuran diperbesar 2x: 5 x 2 = 10 cm."],
-  ["Tips utama dalam membuat garis-garis grid pada kertas gambar agar mudah dihapus adalah _____", ["Menggunakan pensil secara tipis-tipis (tekanan ringan)", "Menggunakan spidol hitam tebal", "Menggunakan pulpen tinta", "Menekan pensil sekuat tenaga"], 0, "Garis grid digambar tipis agar nanti mudah dihapus tanpa merusak kertas."],
-  ["Alat utama yang digunakan untuk mengukur dan membuat kisi-kisi kotak (grid) secara presisi adalah _____", ["Penggaris dan pensil", "Krayon dan kuas", "Cat air dan spidol", "Jangka dan penghapus saja"], 0, "Penggaris dan pensil dibutuhkan untuk membuat petak grid akurat."],
-  ["Pengaplikasian metode grid sangat berguna ketika seorang seniman ingin _____", ["Memindahkan atau mengubah skala (memperbesar/memperkecil) gambar secara akurat", "Mewarnai lukisan minyak", "Membuat patung dari tanah liat", "Memotong kertas gambar"], 0, "Grid membantu meniru/mengubah skala gambar dengan presisi tinggi."],
-  ["Selain pensil dan penggaris, alat bantu yang tepat untuk membersihkan sisa garis grid tanpa merusak kertas adalah _____", ["Penghapus lunak (soft eraser)", "Ampelas", "Kertas minyak", "Cairan pengencer"], 0, "Penghapus lunak digunakan agar permukaan kertas tidak rusak."],
-  ["Agar hasil pembesaran gambar dengan metode grid tetap proporsional, syarat jumlah kotak pada gambar acuan dan kertas baru adalah _____", ["Jumlah petak/kotak harus sama persis", "Gambar baru harus punya kotak lebih sedikit", "Gambar asli kotaknya dihilangkan", "Jumlah kotak bebas tanpa perhitungan"], 0, "Rasio dan jumlah petak grid harus sama di kedua media."],
-  ["Urutan langkah menggambar dengan grid yang benar adalah _____\n1. Menggambar outline objek sesuai koordinat kotak\n2. Membuat kisi-kisi grid pada gambar acuan\n3. Membuat kisi-kisi grid skala pada kertas gambar\n4. Menghapus garis grid dan finishing", ["2 - 3 - 1 - 4", "1 - 2 - 3 - 4", "3 - 2 - 4 - 1", "4 - 3 - 2 - 1"], 0, "Urutan: buat grid acuan -> buat grid target -> menggambar garis objek -> hapus grid."],
-  ["Fungsi utama kisi-kisi (grid) dalam menggambar acuan adalah sebagai _____", ["Pemandu koordinat letak detail objek", "Hiasan latar belakang", "Penyerap cat lukis", "Bingkai foto"], 0, "Grid berfungsi sebagai titik koordinat bantu."],
-  ["Kesalahan umum yang menyebabkan hasil gambar grid menjadi miring atau tidak simetris adalah _____", ["Ukuran kotak grid tidak konsisten/tidak sama presisi", "Menggunakan pensil terlalu tipis", "Menghapus grid di akhir", "Menggunakan penggaris panjang"], 0, "Kotak yang ukurannya tidak seragam membuat gambar melenceng."],
-  ["Budi menggambar sketsa wajah menggunakan grid 1x1 cm. Jika ia ingin memperbesar gambar 3 kali lipat, ukuran kotak grid di kertas baru adalah _____", ["3 cm x 3 cm", "1 cm x 1 cm", "6 cm x 6 cm", "9 cm x 9 cm"], 0, "Skala perbandingan 3x berarti petak 1 cm diubah jadi 3 cm."],
-  ["Langkah pertama yang harus dilakukan sebelum membuat gambar dengan metode grid adalah _____", ["Menyiapkan gambar acuan dan menentukan skalanya", "Direct mewarnai kertas", "Menghapus kertas gambar", "Memotong kertas menjadi segitiga"], 0, "Langkah awal adalah menentukan gambar acuan & skala yang diinginkan."],
-  ["Apabila terjadi kesalahan koordinat saat memindahkan pola dari grid acuan ke kertas gambar, akibatnya adalah _____", ["Proporsi dan bentuk objek menjadi tidak proporsional / salah", "Gambar menjadi lebih bagus", "Warna pensil berubah", "Garis grid menghilang"], 0, "Salah koordinat kotak membuat bentuk gambar tidak sesuai aslinya."],
-  ["Menggambar rupa manusia menggunakan grid membantu seniman dalam menjaga _____", ["Proporsi anatomi wajah/tubuh agar mirip aslinya", "Ketebalan kertas", "Kecepatan mengeringnya cat", "Harga jual gambar"], 0, "Grid menjaga kemiripan proporsi anatomi."],
-  ["Tips memindahkan garis lukisan pada grid agar presisi adalah _____", ["Fokus menggambar detail tiap kotak satu per satu", "Menggambar langsung sekaligus tanpa melihat petak", "Mewarnai latar belakang terlebih dahulu", "Menggunakan cat tebal di awal"], 0, "Mengamati posisi garis di tiap kotak koordinat secara detail."],
-  ["Teknik menggambar grid sudah dikenal sejak zaman Mesir Kuno. Alasan teknik ini bertahan hingga kini adalah _____", ["Sederhana, efisien, dan tingkat akurasinya tinggi", "Satu-satunya teknik menggambar yang ada", "Tidak memerlukan kertas", "Hanya bisa dipakai oleh komputer"], 0, "Grid sangat populer karena akurat dan mudah diterapkan siapa saja."],
-
-  // Menggambar Model: Unsur & Prinsip Seni Rupa (36-50)
-  ["Unsur seni rupa paling mendasar yang menjadi awal dari segala bentuk garis dan bidang adalah _____", ["Titik / Bintik", "Warna", "Tekstur", "Gelap Terang"], 0, "Titik (dot) adalah unsur seni rupa paling dasar."],
-  ["Berikut ini yang KETIGANYA merupakan unsur-unsur seni rupa adalah _____", ["Garis, Bentuk, Tekstur", "Keseimbangan, Kesatuan, Irama", "Proporsi, Penekanan, Harmoni", "Skala, Grid, Perspektif"], 0, "Garis, bentuk, dan tekstur adalah contoh unsur fisik seni rupa."],
-  ["Unsur seni rupa yang memberikan kesan kualitas permukaan suatu benda (halus, kasar, licin) saat diraba atau dilihat adalah _____", ["Tekstur", "Ruang", "Titik", "Warna Primer"], 0, "Tekstur adalah nilai raba/visual dari permukaan bidang."],
-  ["Gambar sebuah bola tampak memiliki volume 3 dimensi karena adanya permainan gradasi warna dari terang ke gelap. Unsur seni rupa tersebut adalah _____", ["Gelap Terang (Light and Shade)", "Tekstur kasar", "Garis putus-putus", "Bidang datar"], 0, "Gelap terang memberikan pencahayaan dan wujud efek volume 3D."],
-  ["Penggunaan warna merah, kuning, dan biru dalam menggambar termasuk ke dalam kelompok unsur warna _____", ["Primer", "Sekunder", "Tersier", "Netral"], 0, "Merah, kuning, biru adalah warna pokok/primer."],
-  ["Pengertian unsur 'Ruang' pada karya seni rupa dua dimensi adalah _____", ["Kesan kedalaman atau jarak yang bersifat semu", "Ruangan kamar tidur asli", "Ukuran luas kertas", "Tempat menyimpan alat lukis"], 0, "Ruang pada karya 2D bersifat semu/ilusi kedalaman."],
-  ["Garis zig-zag pada sebuah gambar memberikan kesan visual _____", ["Tajam, semangat, gembira, atau gelisah", "Tenang dan halus", "Lurus dan kaku", "Pasrah dan lemas"], 0, "Garis zig-zag memberikan dinamika tajam dan gelisah/semangat."],
-  ["Pengertian dari 'Prinsip Seni Rupa' adalah _____", ["Kaidah atau pedoman dasar dalam menyusun unsur-unsur seni rupa menjadi karya yang harmonis", "Alat-alat untuk menggambar di kertas", "Bahan pewarna alami", "Jenis-jenis pensil menggambar"], 0, "Prinsip seni rupa adalah aturan/cara menata unsur-unsur seni."],
-  ["Saat menggambar vas bunga dan buah di meja, ukuran vas bunga digambar seimbang dan sesuai dibandingkan ukuran buah di sampingnya. Prinsip ini menerapkan _____", ["Proporsi", "Komposisi", "Irama", "Penekanan"], 0, "Proporsi adalah kesesuaian perbandingan ukuran antar bagian benda."],
-  ["Prinsip seni rupa yang mengatur penyusunan objek gambar sehingga terlihat seimbang antara bagian kiri dan kanan dinamakan _____", ["Keseimbangan (Balance)", "Kesatuan", "Irama", "Gradasi"], 0, "Keseimbangan (balance) mengatur keserasian bobot visual."],
-  ["Contoh penerapan prinsip 'Pusat Perhatian' (Center of Interest / Emphasis) dalam menggambar model adalah _____", ["Memberikan warna paling terang atau ukuran paling besar pada objek utama", "Menyamakan semua ukuran objek", "Mengosongkan bagian tengah kertas", "Menggambar garis tepi tebal di seluruh kertas"], 0, "Pusat perhatian dibuat dengan menonjolkan objek utama dibanding objek pendukung."],
-  ["Pengulangan unsur seni rupa secara teratur dan terus-menerus sehingga menciptakan kesan gerakan visual disebut prinsip _____", ["Irama (Rhythm)", "Keseimbangan", "Proporsi", "Keseragaman"], 0, "Irama adalah pengulangan unsur visual secara teratur."],
-  ["Berikut ini yang termasuk ke dalam kelompok 'Prinsip Seni Rupa' adalah _____", ["Kesatuan, Keseimbangan, Proporsi, Irama", "Garis, Bidang, Bentuk, Warna", "Titik, Tekstur, Ruang, Gelap Terang", "Pensil, Kuas, Kanvas, Cat"], 0, "Kesatuan, Keseimbangan, Proporsi, dan Irama adalah Prinsip Seni Rupa."],
-  ["Prinsip 'Kesatuan' (Unity) dalam menggambar model berarti _____", ["Seluruh unsur dan objek saling mendukung sehingga membentuk satu kesatuan yang utuh dan serasi", "Menggambar satu buah objek saja di tengah", "Memisah-misahkan gambar di kertas terpisah", "Menggunakan satu jenis warna saja"], 0, "Kesatuan (unity) membuat elemen terpadu berkesinambungan."],
-  ["Seorang siswa menggambar teko kecil di samping cangkir yang ukurannya raksasa melebihi teko tersebut. Gambar tersebut terasa janggal karena melanggar prinsip _____", ["Proporsi", "Keseimbangan", "Tekstur", "Gelap Terang"], 0, "Ukuran cangkir yang lebih besar dari teko melanggar prinsip perbandingan ukuran (Proporsi)."]
+// SENI RUPA DATA (50)
+const dataSeni = [
+  { q: "Kata 'perspektif' berasal dari bahasa Latin, yaitu 'perspicere' yang berarti _____", o: ["Melihat secara tepat / menembus", "Menggambar indah", "Melukis alam", "Memotong bidang"], c: 0, e: "Perspicere = melihat secara tepat/menembus." },
+  { q: "Pengamatan objek di mana posisi mata pengamat berada jauh di bawah objek dinamakan sudut pandang mata _____", o: ["Cacing / Burung bawah", "Normal", "Burung / Katak", "Samping"], c: 0, e: "Sudut pandang mata cacing (posisi di bawah objek)." },
+  { q: "Ahmad berdiri di lantai 15 dan melihat mobil tampak sangat kecil. Jenis sudut pandangnya adalah _____", o: ["Mata Burung (Bird's eye view)", "Mata Normal", "Mata Cacing", "Mata Samping"], c: 0, e: "Sudut pandang mata burung (posisi dari tinggi ke bawah)." },
+  { q: "Sudut pandang mata yang posisinya sejajar dengan tinggi mata manusia dinamakan sudut pandang mata _____", o: ["Normal", "Cacing", "Burung", "Luar"], c: 0, e: "Mata normal sejajar tinggi pengamat." },
+  { q: "Pernyataan yang tepat mengenai gambar perspektif adalah _____", o: ["Teknik menggambar objek 3D pada bidang datar sesuai pandangan mata", "Teknik menggambar dengan lingkaran", "Gambar tanpa titik hilang", "Gambar mengabaikan jarak"], c: 0, e: "Memindahkan bentuk 3D ke 2D sesuai pandangan mata." },
+  { q: "Di tengah rel kereta api yang lurus, rel tampak menyatu pada satu titik di kejauhan. Ini menerapkan perspektif _____", o: ["1 Titik Hilang", "2 Titik Hilang", "3 Titik Hilang", "Tanpa Titik Hilang"], c: 0, e: "Objek lurus memusat ke 1 titik." },
+  { q: "Gambar koridor sekolah yang memanjang lurus ke depan menggunakan teknik perspektif _____", o: ["1 Titik Hilang", "2 Titik Hilang", "3 Titik Hilang", "4 Titik Hilang"], c: 0, e: "Koridor lurus menggunakan 1 titik hilang." },
+  { q: "Pengertian dari garis horizon dalam menggambar perspektif adalah _____", o: ["Garis khayal yang menunjukkan tingginya pandangan mata pengamat", "Garis tebal di bawah kertas", "Garis pemotong vertikal", "Garis melingkar"], c: 0, e: "Garis khayal pembatas mata pengamat." },
+  { q: "Fungsi utama titik hilang pada gambar perspektif adalah _____", o: ["Sebagai pusat pertemuan garis-garis sejajar yang menjauh dari mata", "Sebagai hiasan gambar", "Untuk mewarnai latar", "Sebagai garis tepi"], c: 0, e: "Titik temu garis yang menjauh." },
+  { q: "Menggambar sudut luar gedung bertingkat di mana kedua sisinya miring ke kanan dan kiri menggunakan perspektif _____", o: ["2 Titik Hilang", "1 Titik Hilang", "Katak", "Mata Normal"], c: 0, e: "Melihat dari sudut luar memakai 2 titik hilang." },
+  { q: "Lokasi dua titik hilang pada perspektif 2 titik hilang terletak pada garis horizon di sebelah _____", o: ["Kiri dan kanan", "Atas dan bawah", "Tengah saja", "Depan dan belakang"], c: 0, e: "Berada di ujung kiri dan kanan horizon." },
+  { q: "Kaidah utama dalam perspektif 2 titik hilang adalah _____", o: ["Garis horizontal objek menuju ke 2 titik hilang di garis horizon", "Semua garis digambar melengkung", "Objek jauh digambar lebih besar", "Tanpa garis horizon"], c: 0, e: "Garis horizontal memusat ke 2 titik." },
+  { q: "Menggambar interior kamar dari posisi sudut ruangan paling tepat memakai perspektif _____", o: ["2 Titik Hilang", "1 Titik Hilang", "3 Titik Hilang", "Tanpa Titik Hilang"], c: 0, e: "Sudut ruangan memakai 2 titik hilang." },
+  { q: "Pernyataan yang BENAR mengenai perspektif 2 titik hilang adalah _____", o: ["Memiliki 2 titik fokus pada garis horizon untuk melihat dari sudut objek", "Objek tampak rata", "Hanya untuk lingkaran", "Titik hilang di luar horizon"], c: 0, e: "Memiliki 2 titik fokus di garis horizon." },
+  { q: "Akibat lokasi titik hilang terlalu dekat satu sama lain pada perspektif 2 titik hilang adalah _____", o: ["Gambar objek tampak distorsi / janggal", "Gambar sangat realistis", "Warna memudar", "Garis hilang otomatis"], c: 0, e: "Menyebabkan distorsi/bentuk janggal." },
+  { q: "Semakin jauh posisi suatu benda dari mata pengamat, maka benda tersebut akan tampak _____", o: ["Semakin kecil", "Semakin besar", "Semakin tebal", "Ukuran tetap"], c: 0, e: "Makin jauh benda makin kecil." },
+  { q: "Pemandangan jalan berbelok di bukit menerapkan hukum perspektif di mana _____", o: ["Warna dan detail benda di kejauhan makin pudar", "Warna benda makin tajam", "Ukuran pohon tidak berubah", "Objek dekat terlihat kecil"], c: 0, e: "Perspektif warna: detail & warna makin jauh makin pudar." },
+  { q: "Contoh benda yang paling tepat digambar dengan perspektif 2 titik hilang adalah _____", o: ["Kotak kemasan / lemari yang dilihat dari sudutnya", "Bola basket", "Cermin datar", "Papan tulis"], c: 0, e: "Melihat sudut lemari/kotak." },
+  { q: "Arsitek menggambar rancangan rumah dari tampak sudut depan menggunakan teknik perspektif _____", o: ["2 Titik Hilang", "1 Titik Hilang", "3 Titik Hilang", "Mata Cacing"], c: 0, e: "Tampak sudut = 2 titik hilang." },
+  { q: "Objek yang posisinya paling dekat dengan pengamat digambar dengan _____", o: ["Ukuran lebih besar dan detail jelas", "Ukuran lebih kecil", "Garis samar", "Tanpa warna"], c: 0, e: "Objek terdekat tampak paling besar." },
+  { q: "Dini memperbesar gambar 5 cm x 5 cm menjadi 2 kali lipat dengan grid. Ukuran baru gambarnya adalah _____", o: ["10 cm x 10 cm", "7 cm x 7 cm", "15 cm x 15 cm", "20 cm x 20 cm"], c: 0, e: "5 cm x 2 = 10 cm." },
+  { q: "Tips membuat garis grid pada kertas gambar agar mudah dihapus adalah _____", o: ["Menggunakan pensil secara tipis (tekanan ringan)", "Menggunakan spidol hitam", "Menggunakan pulpen", "Menekan pensil kuat-kuat"], c: 0, e: "Digambar tipis agar mudah dihapus." },
+  { q: "Alat utama untuk membuat kisi-kisi kotak (grid) secara presisi adalah _____", o: ["Penggaris dan pensil", "Krayon dan kuas", "Cat air dan spidol", "Jangka dan penghapus"], c: 0, e: "Penggaris dan pensil." },
+  { q: "Metode grid sangat berguna untuk _____", o: ["Memindahkan atau mengubah skala gambar secara akurat", "Mewarnai lukisan minyak", "Membuat patung", "Memotong kertas"], c: 0, e: "Mengubah skala/meniru gambar secara akurat." },
+  { q: "Alat bantu untuk membersihkan garis grid tanpa merusak kertas adalah _____", o: ["Penghapus lunak (soft eraser)", "Ampelas", "Kertas minyak", "Pengencer"], c: 0, e: "Penghapus lunak." },
+  { q: "Syarat jumlah kotak grid pada gambar acuan dan kertas baru agar proporsional adalah _____", o: ["Jumlah petak/kotak harus sama persis", "Gambar baru kotaknya lebih sedikit", "Kotak asli dihilangkan", "Bebas tanpa hitungan"], c: 0, e: "Jumlah petak grid harus sama." },
+  { q: "Urutan langkah menggambar dengan grid yang benar:\n1. Gambar outline\n2. Grid acuan\n3. Grid skala\n4. Hapus grid", o: ["2 - 3 - 1 - 4", "1 - 2 - 3 - 4", "3 - 2 - 4 - 1", "4 - 3 - 2 - 1"], c: 0, e: "Urutan: Grid acuan -> Grid skala -> Outline -> Hapus grid." },
+  { q: "Fungsi utama kisi-kisi (grid) pada acuan adalah sebagai _____", o: ["Pemandu koordinat letak detail objek", "Hiasan latar", "Penyerap cat", "Bingkai"], c: 0, e: "Pemandu koordinat posisi objek." },
+  { q: "Penyebab utama hasil gambar grid miring / tidak simetris adalah _____", o: ["Ukuran kotak grid tidak konsisten/sama", "Pensil terlalu tipis", "Menghapus grid belakangan", "Pakai penggaris panjang"], c: 0, e: "Ukuran petak grid tidak presisi." },
+  { q: "Ukuran grid acuan 1x1 cm. Jika diperbesar 3 kali lipat, ukuran grid baru adalah _____", o: ["3 cm x 3 cm", "1 cm x 1 cm", "6 cm x 6 cm", "9 cm x 9 cm"], c: 0, e: "1 cm x 3 = 3 cm." },
+  { q: "Langkah pertama sebelum membuat gambar metode grid adalah _____", o: ["Menyiapkan gambar acuan & skala", "Langsung mewarnai", "Menghapus kertas", "Memotong kertas"], c: 0, e: "Siapkan acuan dan tentukan skala." },
+  { q: "Akibat salah memasukkan koordinat pola pada grid adalah _____", o: ["Bentuk objek tidak proporsional / salah", "Gambar makin bagus", "Warna pensil berubah", "Grid hilang"], c: 0, e: "Bentuk gambar jadi melenceng." },
+  { q: "Menggambar manusia dengan grid membantu menjaga _____", o: ["Proporsi anatomi wajah/tubuh", "Ketebalan kertas", "Kecepatan cat", "Harga gambar"], c: 0, e: "Menjaga proporsi anatomi." },
+  { q: "Tips memindahkan garis lukisan pada grid agar presisi adalah _____", o: ["Fokus menggambar detail tiap kotak satu per satu", "Gambar langsung tanpa melihat petak", "Warnai latar dulu", "Pakai cat tebal"], c: 0, e: "Fokus petak demi petak." },
+  { q: "Teknik grid bertahan dari zaman Mesir Kuno karena _____", o: ["Sederhana, efisien, dan akurat", "Satu-satunya teknik yang ada", "Tidak butuh kertas", "Hanya bisa di komputer"], c: 0, e: "Sederhana, efisien, dan sangat akurat." },
+  { q: "Unsur seni rupa paling mendasar yang menjadi awal bentuk garis adalah _____", o: ["Titik / Bintik", "Warna", "Tekstur", "Gelap Terang"], c: 0, e: "Titik adalah unsur paling dasar." },
+  { q: "Berikut yang KETIGANYA merupakan unsur-unsur seni rupa adalah _____", o: ["Garis, Bentuk, Tekstur", "Keseimbangan, Kesatuan, Irama", "Proporsi, Penekanan, Harmoni", "Skala, Grid, Perspektif"], c: 0, e: "Garis, Bentuk, Tekstur adalah unsur rupa." },
+  { q: "Unsur seni rupa yang memberikan kesan kualitas permukaan benda saat diraba adalah _____", o: ["Tekstur", "Ruang", "Titik", "Warna Primer"], c: 0, e: "Tekstur adalah nilai raba permukaan." },
+  { q: "Efek volume 3D dari gradasi terang ke gelap pada gambar bola menggunakan unsur _____", o: ["Gelap Terang", "Tekstur kasar", "Garis putus-putus", "Bidang datar"], c: 0, e: "Unsur Gelap Terang." },
+  { q: "Warna merah, kuning, dan biru masuk ke kelompok warna _____", o: ["Primer", "Sekunder", "Tersier", "Netral"], c: 0, e: "Merah, kuning, biru = warna primer." },
+  { q: "Pengertian 'Ruang' pada karya seni rupa dua dimensi adalah _____", o: ["Kesan kedalaman atau jarak yang semu", "Ruangan kamar tidur", "Ukuran kertas", "Tempat alat lukis"], c: 0, e: "Ilusi kedalaman yang bersifat semu." },
+  { q: "Garis zig-zag memberi kesan visual _____", o: ["Tajam, semangat, atau gelisah", "Tenang dan halus", "Lurus kaku", "Pasrah"], c: 0, e: "Memberi kesan tajam dan dinamik/gelisah." },
+  { q: "Pengertian dari 'Prinsip Seni Rupa' adalah _____", o: ["Pedoman dasar menyusun unsur seni rupa agar harmonis", "Alat menggambar", "Bahan pewarna", "Jenis-jenis pensil"], c: 0, e: "Aturan/kaidah menata unsur seni rupa." },
+  { q: "Ukuran vas bunga digambar serasi dengan buah di sampingnya menerapkan prinsip _____", o: ["Proporsi", "Komposisi", "Irama", "Penekanan"], c: 0, e: "Proporsi = perbandingan ukuran." },
+  { q: "Prinsip menyusun objek gambar agar seimbang kiri dan kanan disebut _____", o: ["Keseimbangan (Balance)", "Kesatuan", "Irama", "Gradasi"], c: 0, e: "Keseimbangan (Balance)." },
+  { q: "Contoh penerapan 'Pusat Perhatian' (Emphasis) adalah _____", o: ["Memberikan warna paling terang / ukuran paling besar di objek utama", "Menyamakan ukuran objek", "Mengosongkan bagian tengah", "Menggaris tebal seluruh kertas"], c: 0, e: "Menonjolkan objek utama." },
+  { q: "Pengulangan unsur seni rupa secara teratur menciptakan gerakan visual disebut _____", o: ["Irama (Rhythm)", "Keseimbangan", "Proporsi", "Keseragaman"], c: 0, e: "Irama (Rhythm)." },
+  { q: "Berikut yang termasuk ke dalam 'Prinsip Seni Rupa' adalah _____", o: ["Kesatuan, Keseimbangan, Proporsi, Irama", "Garis, Bidang, Bentuk, Warna", "Titik, Tekstur, Ruang, Gelap Terang", "Pensil, Kuas, Kanvas, Cat"], c: 0, e: "Kesatuan, Keseimbangan, Proporsi, Irama." },
+  { q: "Prinsip 'Kesatuan' (Unity) berarti _____", o: ["Seluruh unsur saling mendukung membentuk karya utuh", "Menggambar satu objek saja", "Memisah-misahkan gambar", "Menggunakan 1 warna"], c: 0, e: "Keterpaduan antar unsur." },
+  { q: "Menggambar cangkir raksasa di sebelah teko kecil melanggar prinsip _____", o: ["Proporsi", "Keseimbangan", "Tekstur", "Gelap Terang"], c: 0, e: "Melanggar prinsip perbandingan ukuran (Proporsi)." }
 ];
 
-let currentQuizData = [];
-let currentIndex = 0;
-let currentScore = 0;
-let isAnswered = false;
-let currentSubjectTitle = "";
+// STATE MANAGEMENT
+let activeQuiz = [];
+let currentIdx = 0;
+let totalScore = 0;
+let userHasAnswered = false;
 
-// SHUFFLE ALGORITHM
-function shuffleArray(array) {
+// SHUFFLE FUNCTION
+function shuffle(array) {
   let arr = [...array];
   for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+    let j = Math.floor(Math.random() * (i + 1));
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
   }
   return arr;
 }
 
-function processAndShuffleData(rawData) {
-  return rawData.map(item => {
-    let qText = item[0];
-    let opts = [...item[1]];
-    let correctText = opts[item[2]];
-    let exp = item[3];
+// START QUIZ
+function startQuiz(type) {
+  let raw = (type === 'inggris') ? dataInggris : dataSeni;
+  let title = (type === 'inggris') ? "🇬🇧 Bahasa Inggris" : "🎨 Seni Rupa";
 
-    let shuffledOpts = shuffleArray(opts);
-    let newCorrectIndex = shuffledOpts.indexOf(correctText);
+  // Process and shuffle options
+  activeQuiz = raw.map(item => {
+    let originalOptions = [...item.o];
+    let correctAnswerText = originalOptions[item.c];
+    let shuffledOptions = shuffle(originalOptions);
+    let newCorrectIndex = shuffledOptions.indexOf(correctAnswerText);
 
     return {
-      q: qText,
-      options: shuffledOpts,
-      correct: newCorrectIndex,
-      explanation: exp
+      q: item.q,
+      o: shuffledOptions,
+      c: newCorrectIndex,
+      e: item.e
     };
   });
-}
 
-function initQuiz(subject) {
-  if(subject === 'inggris') {
-    currentQuizData = processAndShuffleData(rawEnglish);
-    currentSubjectTitle = "🇬🇧 Bahasa Inggris";
-  } else {
-    currentQuizData = processAndShuffleData(rawArt);
-    currentSubjectTitle = "🎨 Seni Rupa";
-  }
+  currentIdx = 0;
+  totalScore = 0;
 
-  currentIndex = 0;
-  currentScore = 0;
-
+  document.getElementById('quiz-badge').innerText = title;
   document.getElementById('screen-home').classList.add('hidden');
   document.getElementById('screen-result').classList.add('hidden');
   document.getElementById('screen-quiz').classList.remove('hidden');
 
-  document.getElementById('quiz-badge').textContent = currentSubjectTitle;
-  renderQuestion();
+  loadQuestion();
 }
 
-function renderQuestion() {
-  isAnswered = false;
-  const qData = currentQuizData[currentIndex];
+// RENDER QUESTION
+function loadQuestion() {
+  userHasAnswered = false;
+  let qData = activeQuiz[currentIdx];
 
-  document.getElementById('quiz-num').textContent = `Soal ${currentIndex + 1} dari ${currentQuizData.length}`;
-  document.getElementById('progress-fill').style.width = `${((currentIndex) / currentQuizData.length) * 100}%`;
-  
-  document.getElementById('question-text').textContent = qData.q;
-  
-  const optionsContainer = document.getElementById('options-list');
+  document.getElementById('quiz-num').innerText = `Soal ${currentIdx + 1} dari ${activeQuiz.length}`;
+  document.getElementById('progress-fill').style.width = `${(currentIdx / activeQuiz.length) * 100}%`;
+  document.getElementById('question-text').innerText = qData.q;
+
+  let optionsContainer = document.getElementById('options-list');
   optionsContainer.innerHTML = '';
 
-  const labels = ['A', 'B', 'C', 'D'];
-  qData.options.forEach((optText, idx) => {
-    const btn = document.createElement('button');
+  let prefixes = ['A', 'B', 'C', 'D'];
+  qData.o.forEach((optText, i) => {
+    let btn = document.createElement('button');
     btn.className = 'btn-option';
-    btn.innerHTML = `<strong>${labels[idx]}.</strong> <span>${optText}</span>`;
-    btn.onclick = () => selectAnswer(idx);
+    btn.innerHTML = `<strong>${prefixes[i]}.</strong> <span>${optText}</span>`;
+    btn.onclick = function() { checkAnswer(i); };
     optionsContainer.appendChild(btn);
   });
 
-  const fbBox = document.getElementById('feedback-box');
-  fbBox.className = 'feedback-box hidden';
-  fbBox.innerHTML = '';
+  let fb = document.getElementById('feedback-box');
+  fb.className = 'feedback-box hidden';
+  fb.innerHTML = '';
 
-  const nextBtn = document.getElementById('btn-next');
-  nextBtn.disabled = true;
-  nextBtn.textContent = (currentIndex === currentQuizData.length - 1) ? "Lihat Hasil 🎯" : "Soal Berikutnya ➜";
+  let btnNext = document.getElementById('btn-next');
+  btnNext.disabled = true;
+  btnNext.innerText = (currentIdx === activeQuiz.length - 1) ? "Lihat Hasil 🎯" : "Soal Berikutnya ➜";
 }
 
-function selectAnswer(selectedIndex) {
-  if(isAnswered) return;
-  isAnswered = true;
+// CHECK ANSWER
+function checkAnswer(chosenIndex) {
+  if (userHasAnswered) return;
+  userHasAnswered = true;
 
-  const qData = currentQuizData[currentIndex];
-  const optionButtons = document.querySelectorAll('.btn-option');
-  const fbBox = document.getElementById('feedback-box');
+  let qData = activeQuiz[currentIdx];
+  let allButtons = document.querySelectorAll('.btn-option');
+  let fb = document.getElementById('feedback-box');
 
-  optionButtons.forEach(btn => btn.disabled = true);
+  allButtons.forEach(btn => btn.disabled = true);
+  allButtons[qData.c].classList.add('opt-correct');
 
-  optionButtons[qData.correct].classList.add('opt-correct');
-
-  if(selectedIndex === qData.correct) {
-    currentScore++;
-    fbBox.className = 'feedback-box correct';
-    fbBox.innerHTML = `<strong>✅ TEPAT SEKALI!</strong><br>${qData.explanation}`;
+  if (chosenIndex === qData.c) {
+    totalScore++;
+    fb.className = 'feedback-box correct';
+    fb.innerHTML = `<strong>✅ JAWABAN BENAR!</strong><br>${qData.e}`;
   } else {
-    optionButtons[selectedIndex].classList.add('opt-wrong');
-    fbBox.className = 'feedback-box wrong';
-    fbBox.innerHTML = `<strong>❌ KURANG TEPAT</strong><br>Jawaban benar: <strong>${['A','B','C','D'][qData.correct]}. ${qData.options[qData.correct]}</strong><br>${qData.explanation}`;
+    allButtons[chosenIndex].classList.add('opt-wrong');
+    let prefixes = ['A', 'B', 'C', 'D'];
+    fb.className = 'feedback-box wrong';
+    fb.innerHTML = `<strong>❌ KURANG TEPAT</strong><br>Jawaban benar: <strong>${prefixes[qData.c]}. ${qData.o[qData.c]}</strong><br>${qData.e}`;
   }
 
-  fbBox.classList.remove('hidden');
+  fb.classList.remove('hidden');
   document.getElementById('btn-next').disabled = false;
 }
 
-function nextQuestion() {
-  if(!isAnswered) return;
+// NEXT QUESTION
+function handleNext() {
+  if (!userHasAnswered) return;
 
-  if(currentIndex < currentQuizData.length - 1) {
-    currentIndex++;
-    renderQuestion();
+  if (currentIdx < activeQuiz.length - 1) {
+    currentIdx++;
+    loadQuestion();
   } else {
-    showResults();
+    renderResult();
   }
 }
 
-function showResults() {
+// RESULT
+function renderResult() {
   document.getElementById('screen-quiz').classList.add('hidden');
   document.getElementById('screen-result').classList.remove('hidden');
 
-  const total = currentQuizData.length;
-  const percentage = Math.round((currentScore / total) * 100);
+  let total = activeQuiz.length;
+  let finalVal = Math.round((totalScore / total) * 100);
 
-  document.getElementById('score-display').textContent = `${currentScore} / ${total}`;
-  document.getElementById('score-percent').textContent = `Nilai Akhir: ${percentage}`;
+  document.getElementById('score-display').innerText = `${totalScore} / ${total}`;
+  document.getElementById('score-percent').innerText = `Nilai Akhir: ${finalVal}`;
 
-  const adviceEl = document.getElementById('advice-text');
-  if(percentage >= 86) {
-    adviceEl.innerHTML = "<strong>🔥 Luar Biasa!</strong> Pemahaman materi lu udah matang banget. Tinggal jaga konsistensi belajar pas hari-H ujian nanti!";
-  } else if(percentage >= 70) {
-    adviceEl.innerHTML = "<strong>👍 Sudah Bagus!</strong> Nilai lu udah aman, tapi masih ada beberapa soal yang terkecoh. Coba koreksi lagi bagian yang salah tadi.";
+  let advice = document.getElementById('advice-text');
+  if (finalVal >= 85) {
+    advice.innerHTML = "<strong>🔥 Bagus Banget!</strong> Pemahaman materi lu udah matang. Tinggal pertahankan pas hari-H!";
+  } else if (finalVal >= 70) {
+    advice.innerHTML = "<strong>👍 Sudah Lumayan!</strong> Nilai lu udah aman, cuma ada beberapa soal yang kecolongan. Bisa pelajari lagi penjelasan soal yang salah tadi.";
   } else {
-    adviceEl.innerHTML = "<strong>📚 Perlu Ditingkatkan!</strong> Jangan patah semangat. Pelajari lagi konsep dasar & kisi-kisinya, lalu coba ulang latihan ini sekali lagi!";
+    advice.innerHTML = "<strong>📚 Perlu Latihan Lagi!</strong> Jangan patah semangat, coba baca-baca lagi materi dan ulangi latihannya sekali lagi ya!";
   }
 }
 
-function exitToHome() {
+// BIND EVENTS ON LOAD
+window.onload = function() {
+  document.getElementById('btn-start-inggris').onclick = function() { startQuiz('inggris'); };
+  document.getElementById('btn-start-seni').onclick = function() { startQuiz('seni'); };
+  document.getElementById('btn-next').onclick = handleNext;
+  document.getElementById('btn-exit').onclick = goHome;
+  document.getElementById('btn-restart').onclick = goHome;
+};
+
+function goHome() {
   document.getElementById('screen-quiz').classList.add('hidden');
   document.getElementById('screen-result').classList.add('hidden');
   document.getElementById('screen-home').classList.remove('hidden');
