@@ -437,7 +437,7 @@ let currentScore = 0;
 let isAnswered = false;
 let currentSubjectTitle = "";
 
-// SHUFFLE ALGORITHM (Fisher-Yates)
+// SHUFFLE ALGORITHM
 function shuffleArray(array) {
   let arr = [...array];
   for (let i = arr.length - 1; i > 0; i--) {
@@ -447,24 +447,13 @@ function shuffleArray(array) {
   return arr;
 }
 
-// FUNGSI MEMBERSIHKAN TEKS DARI TAG SPAN/CITE DENGAN STRIP
-function cleanText(str) {
-  if (typeof str !== 'string') return str;
-  return str.replace(/\[span_\d+\]/gi, '')
-            .replace(/\(start_span\)/gi, '')
-            .replace(/\(end_span\)/gi, '')
-            .replace(/\/gi, '')
-            .trim();
-}
-
 function processAndShuffleData(rawData) {
   return rawData.map(item => {
-    let qText = cleanText(item[0]);
-    let opts = item[1].map(opt => cleanText(opt));
+    let qText = item[0];
+    let opts = [...item[1]];
     let correctText = opts[item[2]];
-    let exp = cleanText(item[3]);
+    let exp = item[3];
 
-    // Shuffle options
     let shuffledOpts = shuffleArray(opts);
     let newCorrectIndex = shuffledOpts.indexOf(correctText);
 
@@ -537,7 +526,6 @@ function selectAnswer(selectedIndex) {
 
   optionButtons.forEach(btn => btn.disabled = true);
 
-  // Highlight Correct Answer
   optionButtons[qData.correct].classList.add('opt-correct');
 
   if(selectedIndex === qData.correct) {
