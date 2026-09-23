@@ -403,7 +403,7 @@ const rawArt = [
   ["Pengaplikasian metode grid sangat berguna ketika seorang seniman ingin _____", ["Memindahkan atau mengubah skala (memperbesar/memperkecil) gambar secara akurat", "Mewarnai lukisan minyak", "Membuat patung dari tanah liat", "Memotong kertas gambar"], 0, "Grid membantu meniru/mengubah skala gambar dengan presisi tinggi."],
   ["Selain pensil dan penggaris, alat bantu yang tepat untuk membersihkan sisa garis grid tanpa merusak kertas adalah _____", ["Penghapus lunak (soft eraser)", "Ampelas", "Kertas minyak", "Cairan pengencer"], 0, "Penghapus lunak digunakan agar permukaan kertas tidak rusak."],
   ["Agar hasil pembesaran gambar dengan metode grid tetap proporsional, syarat jumlah kotak pada gambar acuan dan kertas baru adalah _____", ["Jumlah petak/kotak harus sama persis", "Gambar baru harus punya kotak lebih sedikit", "Gambar asli kotaknya dihilangkan", "Jumlah kotak bebas tanpa perhitungan"], 0, "Rasio dan jumlah petak grid harus sama di kedua media."],
-  ["Urutan langkah menggambar dengan grid yang benar adalah _____\n1. Menggambar outline objek sesuai koordinat kotak\n2. Membuat kisi-kisi grid pada gambar acuan\n3. Membuat kisi-kisi grid skala pada kertas gambar\n4. Menghapus garis grid dan finishing", ["2 - 3 - 1 - 4", "1 - 2 - 3 - 4", "3 - 2 - 4 - 1", "4 - 3 - 2 - 1"], 0, "Urutan: buat grid acuan → buat grid target → menggambar garis objek → hapus grid."],
+  ["Urutan langkah menggambar dengan grid yang benar adalah _____\n1. Menggambar outline objek sesuai koordinat kotak\n2. Membuat kisi-kisi grid pada gambar acuan\n3. Membuat kisi-kisi grid skala pada kertas gambar\n4. Menghapus garis grid dan finishing", ["2 - 3 - 1 - 4", "1 - 2 - 3 - 4", "3 - 2 - 4 - 1", "4 - 3 - 2 - 1"], 0, "Urutan: buat grid acuan -> buat grid target -> menggambar garis objek -> hapus grid."],
   ["Fungsi utama kisi-kisi (grid) dalam menggambar acuan adalah sebagai _____", ["Pemandu koordinat letak detail objek", "Hiasan latar belakang", "Penyerap cat lukis", "Bingkai foto"], 0, "Grid berfungsi sebagai titik koordinat bantu."],
   ["Kesalahan umum yang menyebabkan hasil gambar grid menjadi miring atau tidak simetris adalah _____", ["Ukuran kotak grid tidak konsisten/tidak sama presisi", "Menggunakan pensil terlalu tipis", "Menghapus grid di akhir", "Menggunakan penggaris panjang"], 0, "Kotak yang ukurannya tidak seragam membuat gambar melenceng."],
   ["Budi menggambar sketsa wajah menggunakan grid 1x1 cm. Jika ia ingin memperbesar gambar 3 kali lipat, ukuran kotak grid di kertas baru adalah _____", ["3 cm x 3 cm", "1 cm x 1 cm", "6 cm x 6 cm", "9 cm x 9 cm"], 0, "Skala perbandingan 3x berarti petak 1 cm diubah jadi 3 cm."],
@@ -447,12 +447,22 @@ function shuffleArray(array) {
   return arr;
 }
 
+// FUNGSI MEMBERSIHKAN TEKS DARI TAG SPAN/CITE DENGAN STRIP
+function cleanText(str) {
+  if (typeof str !== 'string') return str;
+  return str.replace(/\[span_\d+\]/gi, '')
+            .replace(/\(start_span\)/gi, '')
+            .replace(/\(end_span\)/gi, '')
+            .replace(/\/gi, '')
+            .trim();
+}
+
 function processAndShuffleData(rawData) {
   return rawData.map(item => {
-    let qText = item[0];
-    let opts = [...item[1]];
+    let qText = cleanText(item[0]);
+    let opts = item[1].map(opt => cleanText(opt));
     let correctText = opts[item[2]];
-    let exp = item[3];
+    let exp = cleanText(item[3]);
 
     // Shuffle options
     let shuffledOpts = shuffleArray(opts);
